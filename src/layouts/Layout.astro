@@ -1,0 +1,48 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	lang?: "it" | "en";
+	description: string;
+}
+
+const { title, lang = "it", description } = Astro.props;
+
+const footerText = {
+	it: {
+		rights: "Ingegneria Web & Analisi Prestazioni",
+		legal: "Attività professionale svolta ai sensi dell'art. 2222 e segg. del Codice Civile (Prestazione d'opera occasionale)."
+	},
+	en: {
+		rights: "Web Engineering & Performance Analytics",
+		legal: "Independent professional activity carried out in compliance with applicable local regulations."
+	}
+};
+---
+
+<!doctype html>
+<html lang={lang} class="bg-white text-gray-900 font-sans scroll-smooth antialiased">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+	</head>
+	<body class="max-w-4xl mx-auto px-6 py-12 selection:bg-blue-100 selection:text-blue-900">
+		
+		<!-- Selettore Lingua Stile Google -->
+		<nav class="flex justify-end space-x-4 text-xs font-medium mb-12">
+			<a href="/" class={`hover:text-blue-600 transition-colors ${lang === 'it' ? 'text-blue-600 font-bold border-b-2 border-blue-600 pb-1' : 'text-gray-500'}`}>Italiano</a>
+			<a href="/en/" class={`hover:text-blue-600 transition-colors ${lang === 'en' ? 'text-blue-600 font-bold border-b-2 border-blue-600 pb-1' : 'text-gray-500'}`}>English</a>
+		</nav>
+
+		<slot />
+
+		<footer class="mt-24 pt-8 border-t border-gray-200 text-center text-xs text-gray-500 space-y-2">
+			<p>© {new Date().getFullYear()} — {footerText[lang].rights}.</p>
+			<p class="text-gray-400 max-w-2xl mx-auto leading-relaxed">{footerText[lang].legal}</p>
+		</footer>
+	</body>
+</html>
