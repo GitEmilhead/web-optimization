@@ -122,8 +122,7 @@ import Layout from '../layouts/Layout.astro';
 				Invia il link del tuo portale o della tua attività attuale. Genereremo un report tecnico dettagliato sui colli di bottiglia strutturali e un piano di ottimizzazione personalizzato.
 			</p>
 		</div>
-		<form name="contatti-portfolio" method="POST" data-netlify="true" class="space-y-4 text-sm">
-			<div class="grid gap-4 sm:grid-cols-2">
+		<form name="contatti-portfolio" method="POST" data-netlify="true" action="/" class="space-y-4 text-sm">			<div class="grid gap-4 sm:grid-cols-2">
 				<div class="space-y-1">
 					<label for="name" class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Nome o Società</label>
 					<input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-gray-900 transition-shadow shadow-sm" placeholder="Es. Rossi S.r.l." />
